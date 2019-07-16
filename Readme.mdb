@@ -1,0 +1,15 @@
+To run the above terraform script on the GCE AWS QA env, do the following.
+
+1. Make sure that you have the correct AWS keys to run this script on GCE AWS QA enviorment in ~/.aws/credentials 
+   with appropriate privilages. 
+2. Pull the latest code
+3. Goto the enviorment folder where you want to execute script, e.g. QA
+4. Copy the file 'terraform.tfvars' in the same folder (Get that file from the DevOps Terraform S3 bucket name "gce-terraform")
+5. Make sure that in terraform.tfvars you modify the profile to match what you have in ~/.aws/credentials for you QA keys
+6. Run 'terraform init -reconfigure' to configure your terraform current state with the one in the S3 bucket
+7. Modify the script as needed
+8. Run 'terraform plan' to detect the changes (make sure it is detecting only the changes you did and not gonna destroy the
+   whole infrastructure!!!)
+9. Run 'terraform apply' to apply changes
+10. Check-in your changes into this repository so that other DevOps person would get the latest state of the current 
+   infrastructure in AWS.
